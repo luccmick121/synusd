@@ -4,3 +4,4 @@
 # builds do foundry
 out/
 cache/
+.DS_Store
