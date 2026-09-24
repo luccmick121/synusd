@@ -1,0 +1,6 @@
+# segredos
+.env
+
+# builds do foundry
+out/
+cache/

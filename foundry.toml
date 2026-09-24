@@ -1,0 +1,54 @@
+# Foundry — perfil principal (produção)
+# Medir gas: forge test --gas-report
+[profile.default]
+src = "contracts"
+test = "test"
+out = "out"
+libs = ["lib"]
+
+solc_version = "0.8.24"
+
+# ---------------------------------------------------------------
+# Perfil SOLIDITY 0.6.6 (era BSC/fabricas de token):
+# gera o artefato 0.6.6 sob demanda:  forge build --profile sol066
+# (testes rodam no default 0.8.24 — forge-std exige 0.8+)
+[profile.sol066]
+solc_version = "0.6.6"
+skip = ["test/*"]
+
+# Otimizador calibrado para tokens (muitas execuções = código menor/barato
+# para usuários chamando transfer; runs=200 é o padrão de mercado)
+optimizer = true
+optimizer_runs = 200
+via_ir = false
+
+# Relatório de gas de todos os contratos nos testes
+gas_reports = ["*"]
+
+# Relatório de tamanho do bytecode (limite de deploy: 24.576 bytes)
+sizes = true
+
+verbosity = 2
+
+# ---------------------------------------------------------------
+# Perfil de comparação: SEM otimizador, para medir o ganho real
+# Uso: forge test --gas-report --profile no-opt
+[profile.no-opt]
+optimizer = false
+via_ir = false
+
+# ---------------------------------------------------------------
+# Perfil "max barato p/ usuário" (runs alto => código menor p/ callers frequentes)
+# Uso: forge test --gas-report --profile many-runs
+[profile.many-runs]
+optimizer = true
+optimizer_runs = 10000
+
+# ---------------------------------------------------------------
+# Verificações extras de segurança (roda sempre no `forge build`)
+[profile.default.fuzz]
+runs = 1000
+
+[invariant]
+runs = 256
+depth = 128

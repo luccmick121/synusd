@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Logo SYNUSD — versao flat (cores chapadas = PNG leve, <100KB) -->
+  <!-- Paleta original: indigo #4F46E5 + ciano #0891B2 — distinta do Tether -->
+  <circle cx="256" cy="256" r="248" fill="#312E81"/>
+  <circle cx="256" cy="256" r="248" fill="#4F46E5"/>
+  <circle cx="256" cy="256" r="206" fill="none" stroke="#818CF8" stroke-width="12"/>
+  <!-- S estilizada -->
+  <text x="256" y="352" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="290" font-weight="900" fill="#FFFFFF" text-anchor="middle">S</text>
+  <!-- setas do ciclo emitir/resgatar -->
+  <path d="M 92 256 l 36 -22 v 44 z" fill="#67E8F9"/>
+  <path d="M 420 256 l -36 -22 v 44 z" fill="#67E8F9"/>
+</svg>
